@@ -1,0 +1,31 @@
+﻿@model List<Chef>
+<div class="text-center nav">
+    <a href="/">Chefs |</a>
+    <a href="/dishes">Dishes</a>
+    <a href="/new" style="float: right;">Add a Chef</a>
+</div>
+
+<h3>Check out our roster of Chefs!</h3>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col"># Of Dishes</th>
+    </tr>
+  </thead>
+  @{
+        foreach(var c in @Model)
+        {
+            var age = (DateTime.Today.Year - c.DateOfBirth.Year)-1;
+    <tbody>
+        <tr>
+        <td>@c.FirstName @c.LastName</td>
+        <td>@age</td>
+        <td>@c.DishesMade.Count</td>
+        </tr>
+    </tbody>
+        }
+    }
+</table>

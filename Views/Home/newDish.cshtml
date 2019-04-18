@@ -1,0 +1,42 @@
+@model Dish
+<h1>Add a new Dish!</h1>
+<a class="btn btn-primary" style="margin-bottom:40px;" href="/">Home</a>
+<form asp-action="CreateDish" asp-controller="Home" method="post">
+    <div class="col-md-4">
+        <div class="form-group">
+            <span class="text-danger" asp-validation-for="DishName"></span>
+            <label for="">Name of Dish</label>
+            <input class="form-control" type="text" asp-for="DishName">
+        </div>
+        <div class="form-group">
+            <span class="text-danger" asp-validation-for="Calories"></span>
+            <label for=""># of Calories</label>
+            <input class="form-control" type="text" asp-for="Calories">
+        </div>
+        <div class="form-group">
+            <span class="text-danger" asp-validation-for="Description"></span>
+            <label for="">Description</label>
+            <textarea class="form-control" asp-for="Description"></textarea>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <span class="text-danger" asp-validation-for="ChefID"></span>
+            <label for="">Chef's Name</label>
+            <select asp-for="ChefID" class="form-control">
+                @{
+                    foreach(var c in @ViewBag.AllChef)
+                    {
+                        <option value="@c.ChefID">@c.FirstName @c.LastName</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <span class="text-danger" asp-validation-for="Tastiness"></span>
+            <label for="">Tastiness</label>
+            <input class="form-control" type="number" asp-for="Tastiness" min="1" max="5">
+        </div>
+    <button class="btn btn-success">Add Dish</button>
+    </div>
+</form>

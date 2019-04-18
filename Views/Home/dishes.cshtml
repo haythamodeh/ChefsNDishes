@@ -1,0 +1,32 @@
+﻿@model List<Dish>
+<div class="text-center nav">
+    <a href="/">Chefs |</a>
+    <a href="/dishes">Dishes</a>
+    <a href="/dishes/new" style="float: right;">Add a Dish</a>
+</div>
+
+<h3>Yum, take a look at our tasty dishes!</h3>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Chef</th>
+      <th scope="col">Tastiness</th>
+      <th scope="col">Calories</th>
+    </tr>
+  </thead>
+  @{
+        foreach(var d in @Model)
+        {
+    <tbody>
+        <tr>
+        <td>@d.DishName</td>
+        <td>@d.Chef.FirstName @d.Chef.LastName</td>
+        <td>@d.Tastiness</td>
+        <td>@d.Calories</td>
+        </tr>
+    </tbody>
+        }
+    }
+</table>
